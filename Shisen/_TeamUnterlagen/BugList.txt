@@ -1,3 +1,10 @@
+
+ACHTUNG: neue Bugliste zu finden unter:
+http://code.google.com/p/gdi1shisen/issues/list
+
+=================================================================
+DEPRECATED BUGLIST
+=================================================================
 BugListe für das Shisen Projekt. Am besten gleich eintragen
 wenn ein Bug entdeckt wurde. Folgendes Template für einen 
 gefundenen Fehler kann benutzt werden:
