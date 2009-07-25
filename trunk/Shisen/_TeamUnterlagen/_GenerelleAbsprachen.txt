@@ -1,0 +1,48 @@
+Verwendeter Zeichensatz:
+========================
+UTF-8
+Anleitung zum ändern des Zeichensatzes:
+http://dev.eclipse.org/newslists/news.eclipse.platform/msg66560.html
+
+--------------------------------------------------------------------------------
+
+Codestyle Constraints:
+======================
+
+(1) Bitte öffnende Klammern "{" nicht ans Ende einer Zeile packen, der Übersicht
+halber.
+
+Korrektes Beispiel:
+public void func()
+{
+	//...
+}
+
+
+(2) Bitte auch Klassenvariablen mit Kommentaren versehen, hier langt ein 
+Kommentar der Form "//"
+
+Korrektes Beispiel:
+//Bildunterschrift
+private String imageCaption = "";
+
+
+(3) Kommentare für Methoden und Klassen bitte in gültigem JavaDOC Format
+
+Korrektes Beispiel:
+/**
+ * Gibt die Anzahl der gespeicherten Züge zurück
+ * @return int Anzahl der gespeicherten Spielzüge
+ */
+public int getNumberOfMoves()
+{
+	return this.gameMoves.size();
+}
+
+(4) Zwischen zwei Methoden bitte wenigstens eine Leerzeile Abstand
+
+--------------------------------------------------------------------------------
+
+wir müssen uns festlegen was wir als zeichen für die einzelnen bricks festlegen
+bzw ob wir ein genereles zeichen für brick festlegen
+

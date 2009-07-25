@@ -1,0 +1,52 @@
+Grundlegendes zum Model-View-Controller (MVC) Prinzip:
+======================================================
+
+Controller:
+* defines application behaviour
+* maps user actions to model updates
+* selects view for response
+
+View:
+* renders the models
+* requests updates from models
+* sends user interactions to controller
+
+Model:
+* encapsulates application state
+* responds to state queries
+* exposes application functionality
+* notifies views of changes
+
+Schaubild:
+
+ [ Controller ]------------ state change ---------------
+   ^         |                                          |
+   |         |                                          |
+ user        |                                          |
+ event       view                                       |
+gestures     selection                                  |
+   |         |                                          |
+   |         \/                                         \/
+   --------[ View ]  --------- state query ---------> [ Model ]
+                    <.......change notification......
+                    
+
+
+Umsetzung MVC in unserem Shisen Projekt:
+========================================================
+
+Zunächst grundlegende Aufteilung in 3 wichtige Packages:
+* gdi1shisen.datastore - zuständig für die Haltung aller Daten (Model)
+* gdi1shisen.gamecontroller - zuständig für die Koordination (Controller)
+* gdi1shisen.gui - zuständig für Nutzerinteraktion mittels GUI (View)
+
+
+Initialisierung des Spiels im Controller unter Init.java
+
+Datenobjekte werden in gdi1shisen.datastore Klassen gehalten. 
+
+Für die Darstellung des Spielfensters ist ShisenFrame.java zuständig (View).
+Die Darstellung des eigentlichen Spielfeldes erfolgt über ShisenFrameBoard.java.
+
+Nachdem die Klassen festgelegt sind können nun vorläufige UML Diagramme
+generiert werden. Sobald fertig dann zu finden unter _TeamUnterlagen/Dokumentation .

@@ -1,0 +1,52 @@
+BugListe für das Shisen Projekt. Am besten gleich eintragen
+wenn ein Bug entdeckt wurde. Folgendes Template für einen 
+gefundenen Fehler kann benutzt werden:
+
+Bug Template:
+
+-----------------------------------------------------------------
+Bug Nr.:	
+Entdeckt:	
+Gelöst:		[ ]
+Beschr.:	
+
+
+
+
+-----------------------------------------------------------------
+Bug Nr.: 	1
+Entdeckt:	Thomas
+Gelöst:		[X]
+Beschr.:	Testlevel Nr. 3 wird nicht richtig erkannt wenn es
+					gelöst wurde. Möglicher Fehler in der Move.isSolved()
+					Methode ?
+-----------------------------------------------------------------
+Bug Nr.:	2
+Entdeckt:	Thomas
+Gelöst:		[ ]
+Beschr.:	Der Cursor für die Tastatursteuerung verschwindet bei
+					Bewegung auf ein freies Spielfeld. Ist es möglich Felder
+					die mit "-" markiert sind zu überspringen? Und vll. ist
+					es auch möglich an den Seiten "über den Rand" zu springen.
+-----------------------------------------------------------------
+Bug Nr.:	3
+Entdeckt:	Thomas
+Gelöst:		[X]
+Beschr.:	Wenn zwei Spielsteine schräg aneinander angrenzen, kann
+					der obere Spielstein nicht mit der Maus angeklickt werden
+					wenn der untere Spielstein bereits ausgewählt wurde.
+					Vermutlich ein Fehler im template.ui
+-----------------------------------------------------------------
+Bug Nr.:	4	
+Entdeckt:	Chandra
+Gelöst:		[X]
+Beschr.:	Bei einem Klick auf Undo / Redo bekommt man plötzlich eine
+					Null Pointer Exception. Diese erfolgt vmtl. beim Aufruf von
+					"gamePanel.setFocusCycleRoot(true);" in ShisenFrameIconBar	
+-----------------------------------------------------------------
+Bug Nr.:	5	
+Entdeckt:	Chandra, Thomas
+Gelöst:		[X]
+Beschr.:	Wenn ich einen Spielzug mache, flackert bei mir jetzt auch
+					das ganze Spielfeld. (Als ob alle Spielsteine nachgeladen
+					werden müssten)
