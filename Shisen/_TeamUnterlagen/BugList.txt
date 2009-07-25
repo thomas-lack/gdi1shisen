@@ -57,3 +57,8 @@ Gelöst:		[ ]
 Beschr.:	lasse ich ein Level durch den Autopiloten lösen und starte bei dem
 			automatischen lösen ein neues spiel/level wirft er eine NullPointerException
 			Lösbar durch abbrechen des GUISolverThread bei jeglicher Eingabe
+-----------------------------------------------------------------
+Bug Nr.:	7
+Entdeckt:	Thomas
+Gelöst:		[ ]
+Beschr.:	Die Zeitanzeige beim Levelstart zeigt bereits eine Stunde Spielzeit an.
