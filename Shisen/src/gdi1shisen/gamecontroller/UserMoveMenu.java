@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
+
+import gdi1shisen.datastore.KeyData;
 import gdi1shisen.datastore.LevelParser;
 import gdi1shisen.datastore.LevelGenerator;
 import gdi1shisen.datastore.GamePlayer;
@@ -31,6 +33,7 @@ public class UserMoveMenu
 	private GamePlayer player;
 	private UserMoveHistory userMoveHistory;
 	private Long currentGameTime;
+	private KeyData moveKeyData;
 	
 	/**
 	 * Konstruktor für den EingabeController der Menüleiste
@@ -199,6 +202,7 @@ public class UserMoveMenu
 					out.writeObject(levelClone);
 					out.writeObject(userMoveHistory);
 					out.writeObject(player);
+					out.writeObject(moveKeyData);
 					out.writeObject(timer.getCurrentGameTime());
 					out.close();
 				}
@@ -241,6 +245,7 @@ public class UserMoveMenu
 				levelClone = (LevelParser)in.readObject();
 				userMoveHistory = (UserMoveHistory)in.readObject();
 				player = (GamePlayer)in.readObject();
+				moveKeyData = (KeyData)in.readObject();
 				currentGameTime = (Long)in.readObject();
 			}
 			catch (Exception ex)
@@ -273,7 +278,7 @@ public class UserMoveMenu
 			//an das Spielfeld, Zwischenspeichern des MoveControllers für laden
 			//eines neuen TileSets
 			UserMove userMoveController = new UserMove(frame, levelParser, this, 
-					userMoveHistory, currentGameTime);
+					userMoveHistory, moveKeyData, currentGameTime);
 			this.userMoveController = userMoveController;
 			gamePanel.setMoveController(userMoveController);
 			frame.getIconBar().setMoveController(userMoveController);
@@ -402,5 +407,15 @@ public class UserMoveMenu
 	public void setGamePlayer(GamePlayer player)
 	{
 		this.player = player;
+	}
+	
+	/**
+	 * Setzt ein neues KeyData Objekt für die Synchronisation
+	 * der Tastatureingaben
+	 * @param moveKeyData
+	 */
+	public void setMoveKeyData(KeyData moveKeyData)
+	{
+		this.moveKeyData = moveKeyData;
 	}
 }
