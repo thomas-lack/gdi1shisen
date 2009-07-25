@@ -50,3 +50,10 @@ Gelöst:		[X]
 Beschr.:	Wenn ich einen Spielzug mache, flackert bei mir jetzt auch
 					das ganze Spielfeld. (Als ob alle Spielsteine nachgeladen
 					werden müssten)
+-----------------------------------------------------------------
+Bug Nr.:	6
+Entdeckt:	Chandra
+Gelöst:		[ ]
+Beschr.:	lasse ich ein Level durch den Autopiloten lösen und starte bei dem
+			automatischen lösen ein neues spiel/level wirft er eine NullPointerException
+			Lösbar durch abbrechen des GUISolverThread bei jeglicher Eingabe
