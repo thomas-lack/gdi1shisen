@@ -84,7 +84,7 @@ public class UserMove {
 	 * @param currentGameTime Long Zeitangabe, wie lange schon gespielt wurde
 	 */
 	public UserMove(ShisenFrame frame, LevelParser levelParser, UserMoveMenu userMoveMenu, 
-			UserMoveHistory historyData, Long currentGameTime)
+			UserMoveHistory historyData, KeyData moveKeyData, Long currentGameTime)
 	{
 		//setzen der Umgebungsobjekte
 		this.frame = frame;
@@ -94,6 +94,7 @@ public class UserMove {
 		numberBricksAtStart = levelParser.countBricks();
 		this.userMoveMenu = userMoveMenu;
 		this.historyData = historyData;
+		this.moveKeyData = moveKeyData;
 		
 		//Timer initialisieren mit bereits gespielter Zeit & Timer starten
 		timer = new Timer(currentGameTime);
@@ -482,6 +483,10 @@ public class UserMove {
 			}
 		}
 		
+		//Synchronisation der aktuellen KeyData mit dem Controller 
+		//für das Menü
+		userMoveMenu.setMoveKeyData(moveKeyData);
+		
 	}
 	
 	/**
@@ -542,6 +547,10 @@ public class UserMove {
 			default:
 				//do nothing...
 		}
+		
+		//Synchronisation der aktuellen KeyData mit dem Controller 
+		//für das Menü
+		userMoveMenu.setMoveKeyData(moveKeyData);
 	}
 	
 	
