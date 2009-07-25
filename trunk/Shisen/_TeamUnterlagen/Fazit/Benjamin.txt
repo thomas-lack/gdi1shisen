@@ -1,0 +1,16 @@
+Das Projekt war relativ bereichernd an wissen und vor allem "praktischer" Erfahrung.
+Also praktische Erfahrung in dem Sinne mal in einer Gruppe wirklich etwas zu Programmieren
+mit Aufgabenteilung, Besprechungen und allem was sonst so zum Programmieren im Team dazu gehört. 
+Da ich die Hausübung so gut wie immer alleine bearbeitet und abgegeben hatte war dies erstmal neu. 
+Desweiteren konnte beim Projekt das Wissen über GUI Programmierung in Java vertieft werden. 
+Beim realisieren der Tastensteurung musste zum Beispiel darauf geachtet werden den Eingabefokus
+immer wieder an das Objekt in der die Tastensteurung implementiert ist zurück zu geben und dass 
+beim verschieben des Cursors dieser entsprechend neugezeichnet, an der alten Position entfernt, 
+die neu Position gespeichert wird und so weiter, nur um mal ein paar Beispiele zu nennen. 
+Dies und vieles anderes bracht mir ein detailierteres Wissen über Interaktion zwischen 
+verschiedenen GUI Objekten. Ansonsten lernte man durch das 
+MVC - Modell wie in ein größeres Projekt sinvoll zu unterteilen 
+und zu verwalten ist. Kurz gesagt es konnten viele neue Erfahrungen gemacht 
+werden und die Zusammenarbeit im Team hat Spaß gemacht auch wenn man teilweise doch sehr 
+unabhängig voneinander gearbeitet hat. Außerdem ist natürlich extrem cool ein Spiel zu programmieren, 
+zumindest bei mir war diese Idee einer der auslöser dafür ein Informatik Studium überhaupt erst anzufangen.
