@@ -74,27 +74,29 @@ implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		//Aktion bei UNDO Button
-		if (e.getSource().equals(undoButton))
+		if(this.userMoveController.reloadInput())
 		{
-			userMoveController.undo();
+			//Aktion bei UNDO Button
+			if (e.getSource().equals(undoButton))
+			{
+				userMoveController.undo();
+			}
+			//Aktion bei REDO Button
+			if (e.getSource().equals(redoButton))
+			{
+				userMoveController.redo();
+			}
+			//Aktion bei ZUGHILFE Button
+			if (e.getSource().equals(hintButton))
+			{
+				userMoveController.showNextPossibleMove();
+			}
+			//Aktion bei AUTOPILOT Button
+			if (e.getSource().equals(solveButton))
+			{
+				userMoveController.solveLevel();
+			}
 		}
-		//Aktion bei REDO Button
-		if (e.getSource().equals(redoButton))
-		{
-			userMoveController.redo();
-		}
-		//Aktion bei ZUGHILFE Button
-		if (e.getSource().equals(hintButton))
-		{
-			userMoveController.showNextPossibleMove();
-		}
-		//Aktion bei AUTOPILOT Button
-		if (e.getSource().equals(solveButton))
-		{
-			userMoveController.solveLevel();
-		}
-		
 		
 		// setze Eingabe Fokus zurück auf ShisenFrame
 		this.userMoveController.setFocus();

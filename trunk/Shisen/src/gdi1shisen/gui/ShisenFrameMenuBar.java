@@ -42,78 +42,81 @@ implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent event)
 	{
-		//TODO
-		//richtige Handler für angeklickte Aktionen
-		String e = event.getActionCommand();
-		if (e.equals("Beenden"))
-			System.exit(0);
-		else if (e.equals("Über"))
+		if(this.moveMenuController.reloadInput())
 		{
-			About about = new About("Über uns");
-			about.setVisible(true);
-		}
-		else if (e.equals("Spielregeln"))
-		{
-		      SpielRegeln spregeln = new SpielRegeln();
-	          spregeln.setVisible(true);
-		    }
-		else if (e.equals("Spielsteuerung"))
-		{
-			 SpielSteuerung spsteuer = new SpielSteuerung();
-	         spsteuer.setVisible(true);
-		}
-		else if (e.equals("Zufallslevel"))
-		{
-			try
+			//richtige Handler für angeklickte Aktionen
+			String e = event.getActionCommand();
+			if (e.equals("Beenden"))
+				System.exit(0);
+			else if (e.equals("Über"))
 			{
-				this.moveMenuController.setNewLevel("randomLevel");
+				About about = new About("Über uns");
+				about.setVisible(true);
 			}
-			catch (Exception ex)
+			else if (e.equals("Spielregeln"))
 			{
-				System.out.println("Fehler in ShisenFrameMenuBar - actionPerformed");
-				System.err.println(ex);
-			}
-		}
-		else if (e.equals("001") || e.equals("002") || e.equals("003") || e.equals("004")
-				|| e.equals("005") || e.equals("006") || e.equals("007") || e.equals("008")
-				|| e.equals("009") || e.equals("010"))
-		{
-			try
+			      SpielRegeln spregeln = new SpielRegeln();
+		          spregeln.setVisible(true);
+			    }
+			else if (e.equals("Spielsteuerung"))
 			{
-				this.moveMenuController.setNewLevel("Levels/" + e + ".lvl");	
+				 SpielSteuerung spsteuer = new SpielSteuerung();
+		         spsteuer.setVisible(true);
 			}
-			catch (Exception ex)
+			else if (e.equals("Zufallslevel"))
 			{
-				System.out.println("Fehler in ShisenFrameMenuBar - actionPerformed");
-				System.err.println(ex);
+				try
+				{
+					this.moveMenuController.setNewLevel("randomLevel");
+				}
+				catch (Exception ex)
+				{
+					System.out.println("Fehler in ShisenFrameMenuBar - actionPerformed");
+					System.err.println(ex);
+				}
 			}
-		}
-		else if (e.equals("Default") || e.equals("Wood") || e.equals("Bricks"))
-		{
-			try
+			else if (e.equals("001") || e.equals("002") || e.equals("003") || e.equals("004")
+					|| e.equals("005") || e.equals("006") || e.equals("007") || e.equals("008")
+					|| e.equals("009") || e.equals("010"))
 			{
-				this.moveMenuController.setNewTileSet("Images/" + e + "/");
+				try
+				{
+					this.moveMenuController.setNewLevel("Levels/" + e + ".lvl");	
+				}
+				catch (Exception ex)
+				{
+					System.out.println("Fehler in ShisenFrameMenuBar - actionPerformed");
+					System.err.println(ex);
+				}
 			}
-			catch (Exception ex)
+			else if (e.equals("Default") || e.equals("Wood") || e.equals("Bricks"))
 			{
-				System.out.println("Fehler in actionPerformed() - ShisenFrameMenuBar");
-				ex.printStackTrace();
+				try
+				{
+					this.moveMenuController.setNewTileSet("Images/" + e + "/");
+				}
+				catch (Exception ex)
+				{
+					System.out.println("Fehler in actionPerformed() - ShisenFrameMenuBar");
+					ex.printStackTrace();
+				}
 			}
+			else if(e.equals("Spielername"))
+			{
+				this.moveMenuController.newPlayerName();
+			}
+			else if(e.equals("Spiel speichern"))
+			{
+				this.moveMenuController.saveLevel();
+			}
+			else if(e.equals("Spiel laden"))
+			{
+				this.moveMenuController.loadLevel();
+			}
+			else
+				System.out.println(e);
 		}
-		else if(e.equals("Spielername"))
-		{
-			this.moveMenuController.newPlayerName();
-		}
-		else if(e.equals("Spiel speichern"))
-		{
-			this.moveMenuController.saveLevel();
-		}
-		else if(e.equals("Spiel laden"))
-		{
-			this.moveMenuController.loadLevel();
-		}
-		else
-			System.out.println(e);
+		
 	}
 	
 	/**

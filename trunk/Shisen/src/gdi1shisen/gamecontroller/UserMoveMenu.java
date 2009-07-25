@@ -420,4 +420,15 @@ public class UserMoveMenu
 	{
 		this.moveKeyData = moveKeyData;
 	}
+	
+	public boolean reloadInput()
+	{
+		if(this.userMoveController==null)
+			return true;
+		else
+			return this.userMoveController.reloadInput();
+		
+			
+	}
+	
 }
