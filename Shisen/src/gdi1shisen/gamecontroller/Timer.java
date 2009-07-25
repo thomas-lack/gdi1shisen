@@ -1,6 +1,8 @@
 package gdi1shisen.gamecontroller;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+
 import gdi1shisen.gui.ShisenFrameInfoBar;
 
 /**
@@ -79,22 +81,9 @@ public class Timer extends Thread
 	 */
 	private String timeToString(Long timestamp)
 	{
-		Time time = new Time(timestamp);
-		int hour = time.getHours();
-		int minute = time.getMinutes();
-		int second = time.getSeconds();
-		String out;
-		
-		out = String.valueOf(hour-1) + ":";
-		if (minute < 10)
-			out += "0" + String.valueOf(minute) + ":";
-		else
-			out += String.valueOf(minute) + ":";
-		if (second < 10)
-			out += "0" + String.valueOf(second);
-		else
-			out += String.valueOf(second);
-		
+		SimpleDateFormat sdfmt = new SimpleDateFormat(); 
+		sdfmt.applyPattern( "hh:mm:ss" ); 
+		String out = sdfmt.format(new Time(timestamp)); 
 		return out;
 	}
 	
