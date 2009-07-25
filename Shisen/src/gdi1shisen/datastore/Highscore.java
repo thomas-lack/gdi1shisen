@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 /**
@@ -19,7 +21,7 @@ public class Highscore {
 	/**
 	 * LinkedList in der die Zeiten aufsteigend/der länge nach sortiert gespeichert sind
 	 */
-	private LinkedList<int[]> zeiten = null;
+	private LinkedList<long[]> zeiten = null;
 	
 	/**
 	 * LinkedList der Namen entsprechend der zeiten
@@ -50,7 +52,7 @@ public class Highscore {
 	 */
 	public void read() throws IOException 
 	{
-		zeiten = new LinkedList<int[]>();
+		zeiten = new LinkedList<long[]>();
 		namen = new LinkedList<String>();
 		File theFile = new File(file);
 		if(!theFile.exists()) theFile.createNewFile();
@@ -65,7 +67,7 @@ public class Highscore {
 				if(parts.length==2)
 				{
 					namen.add(parts[0]);
-					zeiten.addLast(new int[] { Integer.valueOf(parts[1]) });
+					zeiten.addLast(new long[] { Integer.valueOf(parts[1]) });
 				}
 			}
 			i++;
@@ -106,7 +108,7 @@ public class Highscore {
 	 * @return		true wenn eingetragen & highscoreergebnis - false wenn kein highscore
 	 * @throws Exception	wenn highscoredatei nicht angegeben 
 	 */
-	public boolean add(int time, String name) throws Exception
+	public boolean add(long time, String name) throws Exception
 	{
 		if(zeiten==null || namen==null)
 		{
@@ -124,19 +126,19 @@ public class Highscore {
 			{
 				if(zeiten.get(i)[0]>time)
 				{
-					zeiten.add(i,new int[]{time});
+					zeiten.add(i,new long[]{time});
 					namen.add(i, name);
 					write();
 					return true;
 				}
 				i++;
 			}
-			zeiten.addLast(new int[]{time});
+			zeiten.addLast(new long[]{time});
 			namen.addLast(name);
 			write();
 			return true;
 		}else{
-			zeiten.addLast(new int[]{time});
+			zeiten.addLast(new long[]{time});
 			namen.addLast(name);
 			write();
 			return true;
@@ -147,7 +149,7 @@ public class Highscore {
 	 * Gibt die Zeiten in der Highscoreliste von klein nach groß aufsteigend
 	 * @return	die zeiten in der Highscoreliste
 	 */
-	public LinkedList<int[]> getZeiten(){
+	public LinkedList<long[]> getZeiten(){
 		return zeiten;
 	}
 	
@@ -159,7 +161,31 @@ public class Highscore {
 		return namen;
 	}
 	
-	public int size(){
+	/**
+	 * Gibt ein String Array mit Name und Spielzeit passend
+	 * zum angegebenen Index zurück
+	 * @param index Int Index der gewünschten Ausgabestelle
+	 * @return String Array mit Name und Spielzeit
+	 */
+	public String[] getRowData(int index)
+	{
+		String name = namen.get(index);
+		//System.out.println(name);
+		//String time; // = zeiten.get(index).toString();
+		SimpleDateFormat sdfmt = new SimpleDateFormat(); 
+		sdfmt.applyPattern( "HH:mm:ss" ); 
+		String time = sdfmt.format(new Time(zeiten.get(index)[0]-3600000));
+		//System.out.println(time);
+		String[] ret = { String.valueOf(index+1), name, time };
+		return ret;
+	}
+	
+	/**
+	 * Gibt die Anzahl der Highscore Einträge zurück  
+	 * @return int Anzahl der Highscore Einträge
+	 */
+	public int size()
+	{
 		if(namen==null) return 0;
 		else return zeiten.size();
 	}

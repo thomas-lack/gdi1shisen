@@ -1,0 +1,10 @@
+Spieler 1;1295
+Spieler 1;1297
+Spieler 1;1302
+Spieler 1;1357
+Spieler 1;1377
+Spieler 1;1400
+Spieler 1;1417
+Spieler 1;1451
+Spieler 1;1466
+Spieler 1;1472
