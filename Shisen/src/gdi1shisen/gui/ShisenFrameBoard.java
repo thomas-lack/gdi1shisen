@@ -27,6 +27,9 @@ public class ShisenFrameBoard extends GamePanel
 	private int levelHeight;
 	private int levelWidth;
 	
+	// gibt an ob Input bearbeitet wird oder nicht
+	boolean input = true;
+	
 	JButton[][] gameButton;
 	
 	/**
@@ -174,7 +177,9 @@ public class ShisenFrameBoard extends GamePanel
 	 */
 	public void entityClicked(int positionX, int positionY) 
 	{
-		if(!this.moveController.getSolver().isAlive())
+		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
+		this.reloadInput();
+		if(input)
 			this.moveController.newBrickClicked(positionX, positionY);
 	}
 	
@@ -184,7 +189,9 @@ public class ShisenFrameBoard extends GamePanel
 	 */
 	public void entityRightPressed(int positionX, int positionY)
 	{
-		if(!this.moveController.getSolver().isAlive())
+		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
+		this.reloadInput();
+		if(input)
 			this.moveController.showMatchingBricks(positionX, positionY);
 	}
 	
@@ -194,7 +201,9 @@ public class ShisenFrameBoard extends GamePanel
 	 */
 	public void entityRightReleased()
 	{
-		if(!this.moveController.getSolver().isAlive())
+		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
+		this.reloadInput();
+		if(input)
 			this.moveController.hideMatchingBricks();
 	}
 	
@@ -378,6 +387,22 @@ public class ShisenFrameBoard extends GamePanel
 	 */
 	public void keyPressed(int key)
 	{
-		moveController.keyPressed(key);
+		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
+		this.reloadInput();
+		if(input)
+			moveController.keyPressed(key);
+	}
+	
+	public void reloadInput()
+	{
+		if(this.moveController.getSolver() != null)
+		{
+			if(this.moveController.getSolver().isAlive())		
+				this.input=false;
+			else
+				this.input=true;
+		}
+		else
+			this.input = true;
 	}
 }
