@@ -74,7 +74,9 @@ implements ActionListener
 				System.err.println(ex);
 			}
 		}
-		else if (e.equals("001") || e.equals("002") || e.equals("003"))
+		else if (e.equals("001") || e.equals("002") || e.equals("003") || e.equals("004")
+				|| e.equals("005") || e.equals("006") || e.equals("007") || e.equals("008")
+				|| e.equals("009") || e.equals("010"))
 		{
 			try
 			{
@@ -190,6 +192,19 @@ implements ActionListener
 		ret.setMnemonic('L');
 		JMenuItem mi;
 		
+		for (int i=1; i<= 10; i++)
+		{
+			String lvlText;
+			if (i<10)
+				lvlText = "00" + i;
+			else
+				lvlText = "0" + i;
+			mi = new JMenuItem(lvlText, (char)i);
+			mi.addActionListener(this);
+			ret.add(mi);
+			
+		}
+		/*
 		//Level 001
 		mi = new JMenuItem("001", '1');
 		mi.addActionListener(this);
@@ -204,6 +219,7 @@ implements ActionListener
 		mi = new JMenuItem("003", '3');
 		mi.addActionListener(this);
 		ret.add(mi);
+		*/
 		
 		//Separator
 		ret.addSeparator();
