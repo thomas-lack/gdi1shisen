@@ -60,7 +60,7 @@ Beschr.:	Wenn ich einen Spielzug mache, flackert bei mir jetzt auch
 -----------------------------------------------------------------
 Bug Nr.:	6
 Entdeckt:	Chandra
-Gelöst:		[ ]
+Gelöst:		[x]
 Beschr.:	lasse ich ein Level durch den Autopiloten lösen und starte bei dem
 			automatischen lösen ein neues spiel/level wirft er eine NullPointerException
 			Lösbar durch abbrechen des GUISolverThread bei jeglicher Eingabe
