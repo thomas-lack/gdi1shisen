@@ -58,7 +58,9 @@ public class UserMove {
 		historyData  = new UserMoveHistory();
 		
 		// KeyData initialisieren wird benötigt um Cursor Position zu speichern
-		this.moveKeyData = new KeyData();
+		//Anschließend Synchronisation mit Menü Controller
+		moveKeyData = new KeyData();
+		userMoveMenu.setMoveKeyData(moveKeyData);
 				
 		//Timer Objekt erzeugen (paralleler Thread, der jede Sekunde
 		//die Zeitanzeige aktualisiert) und relevante Objektinfos setzen
