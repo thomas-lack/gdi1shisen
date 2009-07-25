@@ -27,7 +27,6 @@ public class UserMoveMenu
 	private ShisenFrame frame;
 	private LevelParser levelParser;
 	private LevelParser levelClone;
-	private String tileSet = "Images/Default/";
 	private UserMove userMoveController;
 	private Timer timer;
 	private GamePlayer player;
@@ -58,7 +57,7 @@ public class UserMoveMenu
 	throws InternalFailureException, ParameterOutOfRangeException, 
 		LevelParserInconsistentException
 	{
-		this.tileSet = tileSet;
+		player.setTileSet(tileSet);
 		
 		//Falls bereits ein Spiel läuft, dann soll das
 		//neue Tileset auf das bestehende Spiel angewendet werden
@@ -111,11 +110,16 @@ public class UserMoveMenu
 			timer.stopTimer();
 		
 		//erzeugen eines neuen LevelParser Objekts für das neue Level
+		//und setzen der "aktuelles Level" Informationen für das Player Objekt 
 		if (level.equals("randomLevel"))
+		{
 			this.levelParser = new LevelParser(LevelGenerator.generateSolvable());
+			player.setActualLevel("RANDOM");
+		}	
 		else
 		{
-			this.levelParser = new LevelParser(level);	
+			this.levelParser = new LevelParser(level);
+			player.setActualLevel(level);
 		}
 		
 		//entfernen aller vorherigen Elemente im CENTER des Fensters
@@ -138,7 +142,7 @@ public class UserMoveMenu
 		//erzeugen eines neuen MoveControllers für das Spielfeld und Übergabe
 		//an das Spielfeld, Zwischenspeichern des MoveControllers für laden
 		//eines neuen TileSets
-		UserMove userMoveController = new UserMove(frame, levelParser, this);
+		UserMove userMoveController = new UserMove(frame, levelParser, this, player);
 		this.userMoveController = userMoveController;
 		gamePanel.setMoveController(userMoveController);
 		frame.getIconBar().setMoveController(userMoveController);
@@ -147,7 +151,7 @@ public class UserMoveMenu
 		this.levelClone=this.levelParser.clone();
 		
 		//Übergeben der Leveldaten an das Spielfeld und Darstellung im Fenster
-		gamePanel.setTileSet(this.tileSet);
+		gamePanel.setTileSet(player.getTileSet());
 		gamePanel.setLevel(this.levelParser.getLevel());
 	}
 	
@@ -276,13 +280,13 @@ public class UserMoveMenu
 			//an das Spielfeld, Zwischenspeichern des MoveControllers für laden
 			//eines neuen TileSets
 			UserMove userMoveController = new UserMove(frame, levelParser, this, 
-					userMoveHistory, moveKeyData, currentGameTime);
+					userMoveHistory, moveKeyData, currentGameTime, player);
 			this.userMoveController = userMoveController;
 			gamePanel.setMoveController(userMoveController);
 			frame.getIconBar().setMoveController(userMoveController);
 			
 			//Übergeben der Leveldaten an das Spielfeld und Darstellung im Fenster
-			gamePanel.setTileSet(this.tileSet);
+			gamePanel.setTileSet(player.getTileSet());
 			try 
 			{
 				gamePanel.setLevel(this.levelParser.getLevel());
@@ -330,13 +334,13 @@ public class UserMoveMenu
 		//erzeugen eines neuen MoveControllers für das Spielfeld und Übergabe
 		//an das Spielfeld, Zwischenspeichern des MoveControllers für laden
 		//eines neuen TileSets
-		UserMove userMoveController = new UserMove(frame, levelClone, this);
+		UserMove userMoveController = new UserMove(frame, levelClone, this, player);
 		this.userMoveController = userMoveController;
 		gamePanel.setMoveController(userMoveController);
 		frame.getIconBar().setMoveController(userMoveController);
 		
 		//Übergeben der Leveldaten an das Spielfeld und Darstellung im Fenster
-		gamePanel.setTileSet(this.tileSet);
+		gamePanel.setTileSet(player.getTileSet());
 		try
 		{
 			gamePanel.setLevel(this.levelClone.getLevel());

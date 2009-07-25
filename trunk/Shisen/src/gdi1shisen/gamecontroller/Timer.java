@@ -37,9 +37,10 @@ public class Timer extends Thread
 	 * wie lange lief das Spiel? 
 	 * @return	spielzeit in millisekunden
 	 */
-	public String getGameTime()
+	public long getGameTime()
 	{
-		return timeToString(endTime - startTime);
+		//return timeToString(endTime - startTime);
+		return (endTime - startTime);
 	}
 	
 	/**

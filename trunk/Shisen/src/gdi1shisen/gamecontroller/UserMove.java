@@ -1,11 +1,16 @@
 package gdi1shisen.gamecontroller;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.util.LinkedList;
+
+import gdi1shisen.datastore.GamePlayer;
+import gdi1shisen.datastore.Highscore;
 import gdi1shisen.datastore.UserMoveHistory;
 import gdi1shisen.datastore.MoveData;
 import gdi1shisen.datastore.KeyData;
 import gdi1shisen.gamecontroller.Move;
+import gdi1shisen.gui.HighscoreFrame;
 import gdi1shisen.gui.MessageBox;
 import gdi1shisen.gui.ShisenFrame;
 import gdi1shisen.gui.ShisenFrameBoard;
@@ -25,6 +30,7 @@ public class UserMove {
 	private LevelParser levelParser;
 	private MoveData moveControllerData = new MoveData();
 	private UserMoveMenu userMoveMenu;
+	private GamePlayer player;
 	
 	private UserMoveHistory historyData;
 	private Timer timer;
@@ -46,7 +52,8 @@ public class UserMove {
 	 * @param levelParser LevelParser Objekt des aktuellen Levels
 	 * @param userMoveMenu UserMoveMenu Objekt des Menüleisten Controllers
 	 */
-	public UserMove(ShisenFrame frame, LevelParser levelParser,	UserMoveMenu userMoveMenu)
+	public UserMove(ShisenFrame frame, LevelParser levelParser,	
+			UserMoveMenu userMoveMenu, GamePlayer player)
 	{
 		//relevante Objektvariablen setzen
 		this.frame = frame;
@@ -56,6 +63,7 @@ public class UserMove {
 		numberBricksAtStart = levelParser.countBricks();
 		this.userMoveMenu = userMoveMenu;
 		historyData  = new UserMoveHistory();
+		this.player = player;
 		
 		// KeyData initialisieren wird benötigt um Cursor Position zu speichern
 		//Anschließend Synchronisation mit Menü Controller
@@ -86,7 +94,8 @@ public class UserMove {
 	 * @param currentGameTime Long Zeitangabe, wie lange schon gespielt wurde
 	 */
 	public UserMove(ShisenFrame frame, LevelParser levelParser, UserMoveMenu userMoveMenu, 
-			UserMoveHistory historyData, KeyData moveKeyData, Long currentGameTime)
+			UserMoveHistory historyData, KeyData moveKeyData, Long currentGameTime,
+			GamePlayer player)
 	{
 		//setzen der Umgebungsobjekte
 		this.frame = frame;
@@ -97,6 +106,7 @@ public class UserMove {
 		this.userMoveMenu = userMoveMenu;
 		this.historyData = historyData;
 		this.moveKeyData = moveKeyData;
+		this.player = player;
 		
 		//Timer initialisieren mit bereits gespielter Zeit & Timer starten
 		timer = new Timer(currentGameTime);
@@ -367,8 +377,17 @@ public class UserMove {
 		//Rückmeldung beim User
 		showMessageBox("Gewonnen", "Herzlichen Glückwunsch, Sie haben das Level gelöst!");
 		
-		//TODO
 		//Highscore
+		try 
+		{
+			Highscore highscore = new Highscore(player.getActualLevelHighscore());
+			highscore.add(timer.getGameTime(), player.getPlayerName());
+			new HighscoreFrame(highscore, frame);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	/**
