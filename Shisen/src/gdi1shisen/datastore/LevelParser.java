@@ -349,6 +349,17 @@ public class LevelParser implements Serializable
 	 * 
 	 * @return Das geparste Roh-Level in zwei Dimensionen Erste Dimension:
 	 *         Zeilen Zweite Dimension: Zeilenelemente
+	 *         Die Leerzeichen zwischen den chars dienen nur
+	 *         zur besseren Darstellung
+	 *         
+	 *         S P J K A Q L T 6 O B A 7 C K L S 7
+	 *         D H W N H I J 9 F R O Z G L 6 F P 2
+	 *         B C D W Q 7 N J U G H A O I L M Q P
+	 *         D O E Q 7 5 P C F G H I J M 1 D E I
+	 *         S Y Z K 3 8 V W E X A 4 5 N B K 0 C
+	 *         X Y F 8 T U V M R W 9 6 0 1 2 3 4 B
+	 *         E X Y 9 3 S 4 5 6 R Z 0 1 U 8 T 2 V
+	 *         T 9 2 8 3 4 5 X U V G N Y Z 0 R M 1
 	 */
 	public char[][] getRawLevel() 
 	{
@@ -359,14 +370,20 @@ public class LevelParser implements Serializable
 	 * 
 	 * @return Das Level geparste Level aufbereitet mit Umgebungsspacern Eine
 	 *         zeilenweise Ausgabe mit Zeilennummern
+	 *         Zeilen Zweite Dimension: Zeilenelemente
+	 *         Die Leerzeichen zwischen den chars dienen nur
+	 *         zur besseren Darstellung
 	 * 
-	 *         - - - - - - - - - - - - - - - - - - - - - O B A 7 C D 9 F W N H I
-	 *         J 2 L M Q P - - T 1 D E R O Z G H I 6 S P J K A Q L - - B C D W F
-	 *         P G H A O I Q 7 N J U L 6 - - 7 5 P C D O E Q F G H I J M K L S 7
-	 *         - - T 9 U V G X Y Z 0 R M 1 N 2 8 3 4 - - - B K 8 V W E X S Y Z 0
-	 *         C K 3 A 4 5 N - - T U V M R W X Y F 8 9 6 0 1 2 3 4 B - - 8 T 2 V
-	 *         E X Y Z 0 1 U 9 3 S 4 5 6 R - - - - - - - - - - - - - - - - - - -
-	 *         - -
+	 *         - - - - - - - - - - - - - - - - - - - -
+	 *         - S P J K A Q L T 6 O B A 7 C K L S 7 -
+	 *         - D H W N H I J 9 F R O Z G L 6 F P 2 -
+	 *         - B C D W Q 7 N J U G H A O I L M Q P -
+	 *         - D O E Q 7 5 P C F G H I J M 1 D E I -
+	 *         - S Y Z K 3 8 V W E X A 4 5 N B K 0 C -
+	 *         - X Y F 8 T U V M R W 9 6 0 1 2 3 4 B -
+	 *         - E X Y 9 3 S 4 5 6 R Z 0 1 U 8 T 2 V -
+	 *         - T 9 2 8 3 4 5 X U V G N Y Z 0 R M 1 -
+	 *         - - - - - - - - - - - - - - - - - - - -
 	 */
 	public char[][] getLevel() 
 	{
@@ -400,7 +417,11 @@ public class LevelParser implements Serializable
 	
 	/**
 	 * Gibt einen Einzeiler des Levels als String zurück
-	 * @return String
+	 * !!!WICHIGE ANMERKUNG!!!: die eigentlich vorhanden
+	 * 							Zeilenumbrücke sind nicht
+	 * 							in der String enthalten! 
+	 * @return Zeichenkette des Levels
+	 * 			!OHNE! Zeilenumbrüche
 	 */
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
