@@ -1,7 +1,11 @@
 package gdi1shisen.datastore;
 
-public class KeyData 
+import java.io.Serializable;
+
+public class KeyData implements Serializable
 {
+	private static final long serialVersionUID = 1517513107677297148L;
+	
 	// speichert x,y Koordinaten ddes Cursors
 	private int[] cursor;
 	

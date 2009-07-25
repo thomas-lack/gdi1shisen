@@ -229,8 +229,6 @@ public class UserMoveMenu
 		if (filename != null && timer != null)
 			timer.stopTimer();
 		
-		// Variable zum speichern für LevelClone 
-		LevelParser clone=null;
 		//einlesen der benötigten Level Objekte aus der Datei,
 		//entsprechende Objekte werden automatisch in der Instanz dieses
 		//Menüleisten Controllers überschrieben
