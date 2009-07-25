@@ -1,41 +1,62 @@
 package gdi1shisen.gui;
 
-
-
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class About extends JFrame{
+/**
+ * Klasse zum Erzeugen eines "Über uns" Fensters
+ * @author Thomas, Eugen
+ */
+public class About extends JFrame implements ActionListener
+{
 	
-	//----------------------------------------------------------------//
 	private static final long serialVersionUID = -2344L;
-	//----------------------------------------------------------------//
 	
-	public About(String windowTitle){
+	private JLabel centerImage = new JLabel();
+	private JButton exitButton = new JButton(); 
+	
+	/**
+	 * Konstruktor für das Fenster
+	 * @param windowTitle String
+	 */
+	public About(String windowTitle)
+	{
 		super(windowTitle);
-		getContentPane().setLayout(new BorderLayout(10,10));
-		setSize(300, 250);
-		//Setzt Label mit den Namen fest
-		JLabel nameLabel = new JLabel();
-		//Hier kann auch die ganze Geschichte und der ganze schmog rein!
-		nameLabel.setText("Thomas, Eugen, Chandra und Benjamin");
-		//Setzt den text mittig
-		nameLabel.setHorizontalAlignment(JLabel.CENTER);
-		add(BorderLayout.SOUTH, nameLabel);
-		//A-Team
-		JLabel buddhaGuido = new JLabel();
-		buddhaGuido.setText("by A-Team");
-		buddhaGuido.setHorizontalAlignment(JLabel.CENTER);
-		add(BorderLayout.NORTH, buddhaGuido);
-		//bild buddhaGuido
-
-		JLabel buddhaGuidoPic = new JLabel(new ImageIcon("Images/smile.png"));
-		buddhaGuidoPic.setHorizontalAlignment(JLabel.CENTER);
-		add(BorderLayout.CENTER, buddhaGuidoPic);
+		setLayout(new BorderLayout());
 		
-		}
+		//Befüllen des Labels und des JButtons mit Inhalten
+		ImageIcon teamPicture = new ImageIcon("Images/projektgruppe_foto.jpg");
+		centerImage.setIcon(teamPicture);
+		exitButton.setText("Fenster schließen");
+		exitButton.addActionListener(this);
+		
+		//Hinzufügen zum Fenster
+		add(centerImage, BorderLayout.CENTER);
+		add(exitButton, BorderLayout.SOUTH);
+		
+		//Fenster resizen und anzeigen
+		pack();
+		setVisible(true);
+	}
 
-	}	
+	@Override
+	/**
+	 * Abfangen des Events zum schließen des Fensters
+	 * @param e ActionEvent
+	 */
+	public void actionPerformed(ActionEvent e) 
+	{
+		if (e.getSource().equals(exitButton))
+		{
+			dispose();
+		}
+	}
+
+}	
 
