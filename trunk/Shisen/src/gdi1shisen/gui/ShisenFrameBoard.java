@@ -178,7 +178,7 @@ public class ShisenFrameBoard extends GamePanel
 	public void entityClicked(int positionX, int positionY) 
 	{
 		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
-		this.reloadInput();
+		this.input = this.moveController.reloadInput();
 		if(input)
 			this.moveController.newBrickClicked(positionX, positionY);
 	}
@@ -190,7 +190,7 @@ public class ShisenFrameBoard extends GamePanel
 	public void entityRightPressed(int positionX, int positionY)
 	{
 		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
-		this.reloadInput();
+		this.input = this.moveController.reloadInput();
 		if(input)
 			this.moveController.showMatchingBricks(positionX, positionY);
 	}
@@ -202,7 +202,7 @@ public class ShisenFrameBoard extends GamePanel
 	public void entityRightReleased()
 	{
 		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
-		this.reloadInput();
+		this.input = this.moveController.reloadInput();
 		if(input)
 			this.moveController.hideMatchingBricks();
 	}
@@ -388,21 +388,10 @@ public class ShisenFrameBoard extends GamePanel
 	public void keyPressed(int key)
 	{
 		// input Variable aktualisieren und entsprechend Eingabe verarbeiten
-		this.reloadInput();
+		this.input = this.moveController.reloadInput();
 		if(input)
 			moveController.keyPressed(key);
 	}
 	
-	public void reloadInput()
-	{
-		if(this.moveController.getSolver() != null)
-		{
-			if(this.moveController.getSolver().isAlive())		
-				this.input=false;
-			else
-				this.input=true;
-		}
-		else
-			this.input = true;
-	}
+
 }
