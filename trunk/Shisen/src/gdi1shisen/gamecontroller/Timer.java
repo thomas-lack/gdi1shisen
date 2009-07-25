@@ -82,8 +82,8 @@ public class Timer extends Thread
 	private String timeToString(Long timestamp)
 	{
 		SimpleDateFormat sdfmt = new SimpleDateFormat(); 
-		sdfmt.applyPattern( "hh:mm:ss" ); 
-		String out = sdfmt.format(new Time(timestamp)); 
+		sdfmt.applyPattern( "HH:mm:ss" ); 
+		String out = sdfmt.format(new Time(timestamp-3600000)); 
 		return out;
 	}
 	
