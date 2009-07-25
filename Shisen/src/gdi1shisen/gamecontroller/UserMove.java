@@ -658,13 +658,21 @@ public class UserMove {
 	}
 	
 	/**
-	 * setter für solverThread Variable wird von ShisenFrameBoard aufgerufen
-	 * um Eingabeverarbeitung entsprechend zu aktivieren / deaktivieren
-	 * @return GUISolverThread solverThread
+	 * wird von ShisenFrameBorad aufgerufen um abzufragen ob Eingabe verarbeitet
+	 * werden soll oder nicht
+	 * @return boolean Eingabe Verarbeiten ja/nein
 	 */
-	public GUISolverThread getSolver()
+	public boolean reloadInput()
 	{
-		return this.solverThread;
+		if(this.solverThread != null)
+		{
+			if(this.solverThread.isAlive())		
+				return false;
+			else
+				return true;
+		}
+		else
+			return true;
 	}
 }
 
