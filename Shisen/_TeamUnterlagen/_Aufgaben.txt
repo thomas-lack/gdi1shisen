@@ -1,0 +1,80 @@
+Nächtes Treffen: 
+Montag 6.7.09 15.15 C-Pool
+
+========================================================================
+Minimale Ausbaustufe                                User        Status
+========================================================================
+Öffentliche Tests 													Chandra		Fertig
+Parsen von Leveln - 5 Punkte                Chandra		Fertig
+Level validitaetsueberpruefung							Chandra		Fertig
+Check auf syntaktische Korrektheit - 5 Punkte       Eugen     	Fertig
+Korrekte toString()-Methode - 5 Punkte      Eugen   	Fertig
+Erkennen gelöster Level - 5 Punkte          Eugen    	Fertig
+Grafische Benutzerschnittstelle - 5 Punkte	Benjamin, Thomas	in B.
+Grafische Umsetzung der Objekte - 5 Punkte	Benjamin, Thomas	Fertig
+Korrekte Leveldarstellung - 5 Punkte      						Fertig
+Neustart und Beenden - 5 Punkte           	Eugen       quit fertig / neustart  werte resetten/ level parser clonen und starten bis auf Tastatur Steuerung fertig
+Tastensteuerung - 5 Punkte                	Benjamin	In B.
+Ueberpruefen auf gueltigen Zug							Chandra		Fertig
+Naechst moegliche Zuege											Chandra		Fertig
+
+========================================================================
+Ausbaustufe I
+========================================================================
+Öffentliche Tests											Chandra		Fertig
+MVC - 7 Punkte												Thomas		Fertig
+Highscore-Liste - 5 Punkte            Chandra   Fertig
+Highscore-Liste GUI - 5 Punkte        Eugen     in B.
+Timer - GUI-Ebene																Fertig
+Timer - Logikebene										Chandra		Fertig
+Maussteuerung - 3 Punkte												Fertig
+
+========================================================================
+Ausbaustufe II
+========================================================================
+Öffentliche Tests											Thomas		in B.
+Undo und Redo - 5 Punkte							Thomas		fertig
+Spielstand sichern - 4 Punkte					C/T			in B. Objekt mitinitialisieren
+Spielstand laden - 4 Punkte						C/T	 		in B.Objekt mitinitialisieren
+Skin wechseln - 2 Punkte							Thomas 		fertig
+About-Fenster - 1 Punkt               Eugen     Fertig Foto einfügen
+Verbindungslinien darstellen - 4 Punkte				Benjamin    Fertig
+
+========================================================================
+Ausbaustufe III
+========================================================================
+Öffentliche Tests											C/T				fertig
+Hint-Funktion - 5 Punkte							Chandra		Fertig
+Solver-Funktion - 5 Punkte						Chandra		in B.
+
+
+========================================================================
+Bonuspunkte
+========================================================================
+Audio-Clips - 2 Punkte                        Eugen   in B.
+Übersetzung - 4 Punkte Deutsch Englisch ???		wird nicht gemacht
+Nächsten Level starten - 3 Punkte             Thomas 	fertig      
+Variable Feldgröße - 3 Punkte									Thomas(GUI) fertig -  Chandra (logik) fertig
+Automatisch gültigen Level generieren - 6 Punkte		Chandra		Fertig (auch in variablen feldgrößen)
+
+
+========================================================================
+Material für Zusatzpunkte
+========================================================================
+About Fenster mit Regeln/Spielanleitung,            Eugen        Fertig
+Steuerung                     						Eugen        in B. neuer menuepunkt
+
+Mit Rechtsklick alle gleichen Spielsteine hervorheben			Fertig
+Parsen und spielen von Leveln beliebiger Größe		Chandra		fertig
+mehr neue level                                                 in B.
+
+counter verbliebene steine							Thomas	 	Fertig
+links unten Anzeige, ob Züge möglich				Thomas		Fertig.
+
+verbliebene Zeichen mischen							chandra		fertig
+
+glückwunsch fenster bei sieg                                     Fertig
+Dokumentation(Fazit)								jeder		 in B.
+skalierbares fenster & buttons/bilder
+Optionen Fenster
+animation/explodierende Steine
