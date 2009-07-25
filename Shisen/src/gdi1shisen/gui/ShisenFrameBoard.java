@@ -174,7 +174,8 @@ public class ShisenFrameBoard extends GamePanel
 	 */
 	public void entityClicked(int positionX, int positionY) 
 	{
-		this.moveController.newBrickClicked(positionX, positionY);
+		if(!this.moveController.getSolver().isAlive())
+			this.moveController.newBrickClicked(positionX, positionY);
 	}
 	
 	/**
@@ -183,7 +184,8 @@ public class ShisenFrameBoard extends GamePanel
 	 */
 	public void entityRightPressed(int positionX, int positionY)
 	{
-		this.moveController.showMatchingBricks(positionX, positionY);
+		if(!this.moveController.getSolver().isAlive())
+			this.moveController.showMatchingBricks(positionX, positionY);
 	}
 	
 	/**
@@ -192,7 +194,8 @@ public class ShisenFrameBoard extends GamePanel
 	 */
 	public void entityRightReleased()
 	{
-		this.moveController.hideMatchingBricks();
+		if(!this.moveController.getSolver().isAlive())
+			this.moveController.hideMatchingBricks();
 	}
 	
 	/**

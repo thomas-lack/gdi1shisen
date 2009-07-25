@@ -45,6 +45,8 @@ public class UserMove {
 	
 	private int numberBricksAtStart = 0;	
 	
+	// wird benötigt um abzufragen ob Eingabe erfolgen darf
+	private GUISolverThread solverThread =null;
 	
 	/**
 	 * Konstruktor für den Controller der Nutzereingaben auf dem Spielfeld
@@ -529,46 +531,55 @@ public class UserMove {
 	{
 		int [] cursor = moveKeyData.getCursor(); 
 		
-		switch(key)			// abarbeitung der verschiedenen Keys 
-		{	
-			case 0:			
-				// Left verschiebt Cursor nacht Links x=x-1
-				moveCursor(cursor[0]-1,cursor[1]);
-				break;	
-			case 1:
-				// Down verschiebt Cursor um eins nach unten y=y+1 (koordinatenkreuz links oben)
-				moveCursor(cursor[0],cursor[1]+1);
-				break;		
-			case 2:
-				// Right verschiebt Cursor um eins nach rechts x=x+1
-				moveCursor(cursor[0]+1,cursor[1]);
-				break;
-			case 3:
-				// Up verschiebt Cursor um eins nach oben y=y-1 (koordinatenkreuz links oben)
-				moveCursor(cursor[0],cursor[1]-1);
-				break;
-			case 4:
-				redo();
-				break;
-			case 5:
-				undo();
-				break;
-			case 6:
-				// Space hat gleiche funktion wie linke Maustatste 
-				// ruft daher entityClicked(.. , ..) auf
-				this.gamePanel.entityClicked(cursor[0], cursor[1]);
-				break;
-			case 7:
-				// New Game neues spiel wird gestartet
-				// aktuelles Level neu starten!
-				this.userMoveMenu.restartLevel();
-				break;
-			case 8:
-				this.showNextPossibleMove();
-			default:
-				//do nothing...
-		}
+		boolean enabled=true;
 		
+		if(this.solverThread != null)
+			if(this.solverThread.isAlive())
+				enabled = false;
+		
+		if(enabled)
+		{
+			switch(key)			// abarbeitung der verschiedenen Keys 
+			{	
+				case 0:			
+					// Left verschiebt Cursor nacht Links x=x-1
+					moveCursor(cursor[0]-1,cursor[1]);
+					break;	
+				case 1:
+					// Down verschiebt Cursor um eins nach unten y=y+1 (koordinatenkreuz links oben)
+					moveCursor(cursor[0],cursor[1]+1);
+					break;		
+				case 2:
+					// Right verschiebt Cursor um eins nach rechts x=x+1
+					moveCursor(cursor[0]+1,cursor[1]);
+					break;
+				case 3:
+					// Up verschiebt Cursor um eins nach oben y=y-1 (koordinatenkreuz links oben)
+					moveCursor(cursor[0],cursor[1]-1);
+					break;
+				case 4:
+					redo();
+					break;
+				case 5:
+					undo();
+					break;
+				case 6:
+					// Space hat gleiche funktion wie linke Maustatste 
+					// ruft daher entityClicked(.. , ..) auf
+					this.gamePanel.entityClicked(cursor[0], cursor[1]);
+					break;
+				case 7:
+					// New Game neues spiel wird gestartet
+					// aktuelles Level neu starten!
+					this.userMoveMenu.restartLevel();
+					break;
+				case 8:
+					this.showNextPossibleMove();
+				default:
+					//do nothing...
+			}
+		}
+
 		//Synchronisation der aktuellen KeyData mit dem Controller 
 		//für das Menü
 		userMoveMenu.setMoveKeyData(moveKeyData);
@@ -626,7 +637,7 @@ public class UserMove {
 		//Ausgabe mit Hinweis auf Dauer der Berechnungen
 		showMessageBox("Achtung", "Je nach Rechenleistung kann die Berechnung\n" +
 				"zum Lösen des Levels einige Zeit in Anspruch nehmen.");
-		
+			
 		try 
 		{
 			Solver solver = new Solver(levelParser);
@@ -641,7 +652,7 @@ public class UserMove {
 				solution = solver.getSolution();
 											
 				//Simuliere Mausklicks
-				GUISolverThread solverThread = new GUISolverThread(this, gamePanel, solution);
+				solverThread = new GUISolverThread(this, gamePanel, solution);
 				solverThread.start();
 			}
 		} 
@@ -650,6 +661,16 @@ public class UserMove {
 			System.out.println("Fehler in solveLevel - UserMove");
 			ex.printStackTrace();
 		} 
+
+	}
+	
+	/**
+	 * setter für solverThread Variable wird von ShisenFrameBoard aufgerufen
+	 * @return GUISolverThread solverThread
+	 */
+	public GUISolverThread getSolver()
+	{
+		return this.solverThread;
 	}
 }
 
