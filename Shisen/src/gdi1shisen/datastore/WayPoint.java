@@ -1,7 +1,14 @@
 package gdi1shisen.datastore;
 
 import gdi1shisen.exceptions.ParameterOutOfRangeException;
-
+/**
+ * Ein WayPoint ist ein leeres Feld
+ * WayPoints sind immer in realation zu einem Brick und haben entweder die gleiche X oder Y Koordinate.
+ * Ein WayPoint ist entweder direkt an einem Brick oder durch andere WayPoints mit dem Brick verbunden
+ *  
+ * @author chandra
+ *
+ */
 public class WayPoint extends Point 
 {
 	public int direction;
