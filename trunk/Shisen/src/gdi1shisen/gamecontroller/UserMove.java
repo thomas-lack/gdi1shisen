@@ -719,6 +719,16 @@ public class UserMove {
 		else
 			return true;
 	}
+	
+	/**
+	 * Mischt die Steine auf dem Spielfeld neu und startet ein neues
+	 * Spielfeld mit den veränderten Steinen
+	 */
+	public void shuffle()
+	{
+		LevelParser lp = Move.shuffleBoard(levelParser);
+		userMoveMenu.restartShuffleLevel(lp);
+	}
 }
 
 

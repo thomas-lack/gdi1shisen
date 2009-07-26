@@ -116,46 +116,19 @@ public class UserMoveMenu
 		//und setzen der "aktuelles Level" Informationen für das Player Objekt 
 		if (level.equals("randomLevel"))
 		{
-			this.levelParser = new LevelParser(LevelGenerator.generateSolvable());
+			levelParser = new LevelParser(LevelGenerator.generateSolvable());
+			levelClone = levelParser.clone(); 
 			player.setActualLevel("RANDOM");
 		}	
 		else
 		{
-			this.levelParser = new LevelParser(level);
+			levelParser = new LevelParser(level);
+			levelClone = levelParser.clone();
 			player.setActualLevel(level);
 		}
 		
-		//entfernen aller vorherigen Elemente im CENTER des Fensters
-		if (frame.getGamePanel() == null)
-			frame.removeSplashScreen();
-		else
-			frame.removeGamePanel();
-		frame.pack();
-		
-		//erstellen eines neuen Spielfeldes
-		ShisenFrameBoard gamePanel = frame.createGamePanel();
-				
-		//zuordnen des Spielfeldes zum Spielfenster und Anzeige
-		//von Spielfeld und Infoleiste
-		frame.setGamePanel(gamePanel);
-		frame.addGamePanel();
-		frame.addIconBar();
-		frame.addInfoBar();
-		
-		//erzeugen eines neuen MoveControllers für das Spielfeld und Übergabe
-		//an das Spielfeld, Zwischenspeichern des MoveControllers für laden
-		//eines neuen TileSets
-		UserMove userMoveController = new UserMove(frame, levelParser, this, player);
-		this.userMoveController = userMoveController;
-		gamePanel.setMoveController(userMoveController);
-		frame.getIconBar().setMoveController(userMoveController);
-		
-		// setzten des geklonten LevelParser (Anfangszustand)
-		this.levelClone=this.levelParser.clone();
-		
-		//Übergeben der Leveldaten an das Spielfeld und Darstellung im Fenster
-		gamePanel.setTileSet(player.getTileSet());
-		gamePanel.setLevel(this.levelParser.getLevel());
+		//Neues GamePanel erzeugen
+		initializeNewGamePanel(levelParser.getLevel());
 	}
 	
 	/**
@@ -320,6 +293,37 @@ public class UserMoveMenu
 		//erzeugen eines neuen LevelParser Objekts für das neue Level
 		this.levelParser = levelClone;
 		
+		//Neues GamePanel erzeugen
+		initializeNewGamePanel(this.levelClone.getLevel());
+	}
+	
+	public void restartShuffleLevel(LevelParser levelParser)
+	{
+		//Anhalten des parallelen Timer Threads aus vorherigen Leveln
+		//falls einer läuft
+		if (timer != null)
+			timer.stopTimer();
+		
+		//Hinweis auf benutzte Hint-Funktion setzen
+		player.setHintUsed(true);
+		
+		//Setzen der neuen LevelDaten
+		this.levelParser = levelParser;
+		levelClone = levelParser.clone();	
+		
+		//Neues GamePanel erzeugen
+		initializeNewGamePanel(this.levelParser.getLevel());
+	}
+	
+	
+	/**
+	 * Methode die alle benötigten Schritte ausführt, um ein 
+	 * neues Spielfeld aufzubauen und anzuzeigen
+	 * @param levelArr char[][] beinhaltet das darzustellende Level
+	 * 						in seiner erweiterten Form
+	 */
+	public void initializeNewGamePanel(char[][] levelArr)
+	{
 		//entfernen aller vorherigen Elemente im CENTER des Fensters
 		if (frame.getGamePanel() == null)
 			frame.removeSplashScreen();
@@ -340,7 +344,7 @@ public class UserMoveMenu
 		//erzeugen eines neuen MoveControllers für das Spielfeld und Übergabe
 		//an das Spielfeld, Zwischenspeichern des MoveControllers für laden
 		//eines neuen TileSets
-		UserMove userMoveController = new UserMove(frame, levelClone, this, player);
+		UserMove userMoveController = new UserMove(frame, levelParser, this, player);
 		this.userMoveController = userMoveController;
 		gamePanel.setMoveController(userMoveController);
 		frame.getIconBar().setMoveController(userMoveController);
@@ -349,7 +353,7 @@ public class UserMoveMenu
 		gamePanel.setTileSet(player.getTileSet());
 		try
 		{
-			gamePanel.setLevel(this.levelClone.getLevel());
+			gamePanel.setLevel(levelArr);
 		}
 		catch(Exception e)
 		{
@@ -357,6 +361,7 @@ public class UserMoveMenu
 			e.printStackTrace();
 		}
 	}
+	
 	
 	/**
 	 * Zeigt eine Dialogbox im Spielfenster an

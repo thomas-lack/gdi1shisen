@@ -13,7 +13,7 @@ Erkennen gelöster Level - 5 Punkte          Eugen    	Fertig
 Grafische Benutzerschnittstelle - 5 Punkte	Benjamin, Thomas	in B.
 Grafische Umsetzung der Objekte - 5 Punkte	Benjamin, Thomas	Fertig
 Korrekte Leveldarstellung - 5 Punkte      						Fertig
-Neustart und Beenden - 5 Punkte           	Eugen       quit fertig / neustart  werte resetten/ level parser clonen und starten bis auf Tastatur Steuerung fertig
+Neustart und Beenden - 5 Punkte           	Benjamin 	Fertig
 Tastensteuerung - 5 Punkte                	Benjamin	In B.
 Ueberpruefen auf gueltigen Zug							Chandra		Fertig
 Naechst moegliche Zuege											Chandra		Fertig
@@ -24,7 +24,7 @@ Ausbaustufe I
 Öffentliche Tests											Chandra		Fertig
 MVC - 7 Punkte												Thomas		Fertig
 Highscore-Liste - 5 Punkte            Chandra   Fertig
-Highscore-Liste GUI - 5 Punkte        Eugen     in B.
+Highscore-Liste GUI - 5 Punkte        Thomas		Fertig
 Timer - GUI-Ebene																Fertig
 Timer - Logikebene										Chandra		Fertig
 Maussteuerung - 3 Punkte												Fertig
@@ -34,10 +34,10 @@ Ausbaustufe II
 ========================================================================
 Öffentliche Tests											Thomas		in B.
 Undo und Redo - 5 Punkte							Thomas		fertig
-Spielstand sichern - 4 Punkte					C/T			in B. Objekt mitinitialisieren
-Spielstand laden - 4 Punkte						C/T	 		in B.Objekt mitinitialisieren
+Spielstand sichern - 4 Punkte					C/T			fertig
+Spielstand laden - 4 Punkte						C/T	 		fertig
 Skin wechseln - 2 Punkte							Thomas 		fertig
-About-Fenster - 1 Punkt               Eugen     Fertig Foto einfügen
+About-Fenster - 1 Punkt               Eugen     Fertig
 Verbindungslinien darstellen - 4 Punkte				Benjamin    Fertig
 
 ========================================================================
@@ -51,7 +51,7 @@ Solver-Funktion - 5 Punkte						Chandra		in B.
 ========================================================================
 Bonuspunkte
 ========================================================================
-Audio-Clips - 2 Punkte                        Eugen   in B.
+Audio-Clips - 2 Punkte                        wird nicht gemacht
 Übersetzung - 4 Punkte Deutsch Englisch ???		wird nicht gemacht
 Nächsten Level starten - 3 Punkte             Thomas 	fertig      
 Variable Feldgröße - 3 Punkte									Thomas(GUI) fertig -  Chandra (logik) fertig
@@ -61,12 +61,12 @@ Automatisch gültigen Level generieren - 6 Punkte		Chandra		Fertig (auch in vari
 ========================================================================
 Material für Zusatzpunkte
 ========================================================================
-About Fenster mit Regeln/Spielanleitung,            Eugen        Fertig
-Steuerung                     						Eugen        in B. neuer menuepunkt
+About Fenster mit Regeln/Spielanleitung,      Eugen        Fertig
+Steuerung                     								Eugen        in B. neuer menuepunkt
 
-Mit Rechtsklick alle gleichen Spielsteine hervorheben			Fertig
+Mit Rechtsklick alle gleichen Spielsteine hervorheben				Fertig
 Parsen und spielen von Leveln beliebiger Größe		Chandra		fertig
-mehr neue level                                                 in B.
+mehr neue level                                             Fertig
 
 counter verbliebene steine							Thomas	 	Fertig
 links unten Anzeige, ob Züge möglich				Thomas		Fertig.
@@ -74,7 +74,7 @@ links unten Anzeige, ob Züge möglich				Thomas		Fertig.
 verbliebene Zeichen mischen							chandra		fertig
 
 glückwunsch fenster bei sieg                                     Fertig
-Dokumentation(Fazit)								jeder		 in B.
+Dokumentation(Fazit)								jeder		 in B. (Eugen fehlt noch)
 skalierbares fenster & buttons/bilder
 Optionen Fenster
 animation/explodierende Steine
