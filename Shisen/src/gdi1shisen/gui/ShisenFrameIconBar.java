@@ -23,6 +23,7 @@ implements ActionListener
 	private JButton undoButton = new JButton();
 	private JButton redoButton = new JButton();
 	private JButton hintButton = new JButton();
+	private JButton shuffleButton = new JButton();
 	private JButton solveButton = new JButton();
 	
 	
@@ -36,6 +37,7 @@ implements ActionListener
 		ImageIcon rightArrow = new ImageIcon("Images/right-arrow.png");
 		ImageIcon lightbulb = new ImageIcon("Images/lightbulb.png");
 		ImageIcon wrench = new ImageIcon("Images/wrench.png");
+		ImageIcon shuffle = new ImageIcon("Images/shuffle.png");
 		
 		//Buttons belegen
 		undoButton.setIcon(leftArrow);
@@ -47,6 +49,11 @@ implements ActionListener
 		redoButton.setText("Redo");
 		redoButton.setToolTipText("Zug wiederherstellen");
 		redoButton.addActionListener(this);
+		
+		shuffleButton.setIcon(shuffle);
+		shuffleButton.setText("Shuffle");
+		shuffleButton.setToolTipText("Ordnet die verbliebenen Steine auf dem Spielfeld neu an");
+		shuffleButton.addActionListener(this);
 		
 		hintButton.setIcon(lightbulb);
 		hintButton.setText("Zughilfe");
@@ -63,6 +70,8 @@ implements ActionListener
 		add(redoButton);
 		addSeparator();
 		add(hintButton);
+		addSeparator();
+		add(shuffleButton);
 		addSeparator();
 		add(solveButton);
 	}
@@ -90,6 +99,11 @@ implements ActionListener
 			if (e.getSource().equals(hintButton))
 			{
 				userMoveController.showNextPossibleMove();
+			}
+			//Aktion bei SHUFFLE Button
+			if (e.getSource().equals(shuffleButton))
+			{
+				userMoveController.shuffle();
 			}
 			//Aktion bei AUTOPILOT Button
 			if (e.getSource().equals(solveButton))

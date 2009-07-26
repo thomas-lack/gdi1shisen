@@ -69,7 +69,7 @@ implements ActionListener
 				catch (Exception ex)
 				{
 					System.out.println("Fehler in ShisenFrameMenuBar - actionPerformed");
-					System.err.println(ex);
+					ex.printStackTrace();
 				}
 			}
 			else if (e.equals("001") || e.equals("002") || e.equals("003") || e.equals("004")
@@ -83,7 +83,7 @@ implements ActionListener
 				catch (Exception ex)
 				{
 					System.out.println("Fehler in ShisenFrameMenuBar - actionPerformed");
-					System.err.println(ex);
+					ex.printStackTrace();
 				}
 			}
 			else if (e.equals("Default") || e.equals("Wood") || e.equals("Bricks"))

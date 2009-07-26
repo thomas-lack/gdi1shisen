@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 import gdi1shisen.datastore.Brick;
+import gdi1shisen.datastore.LevelManipulation;
 import gdi1shisen.datastore.LevelParser;
 import gdi1shisen.datastore.MoveData;
 import gdi1shisen.datastore.Point;
 import gdi1shisen.datastore.UserMoveHistory;
 import gdi1shisen.datastore.WayPoint;
+import gdi1shisen.exceptions.InternalFailureException;
 import gdi1shisen.exceptions.ParameterOutOfRangeException;
 import gdi1shisen.exceptions.SyntacticIncException;
 
@@ -693,5 +695,30 @@ public class Move {
 		{
 			ex.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Statische Methode die, ein LevelParser Objekt entgegen nimmt
+	 * und darin enthaltene Spielsteine durchmischt
+	 * @param levelParser LevelParser
+	 * @return LevelParser
+	 */
+	public static LevelParser shuffleBoard(LevelParser levelParser)
+	{
+		try 
+		{
+			LevelManipulation lm = new LevelManipulation(levelParser);
+			return lm.mixIt();
+		} 
+		catch (InternalFailureException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SyntacticIncException e) 
+		{
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 }
