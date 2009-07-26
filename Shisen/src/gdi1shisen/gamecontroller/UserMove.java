@@ -1,9 +1,7 @@
 package gdi1shisen.gamecontroller;
 
 import java.awt.Color;
-import java.io.IOException;
 import java.util.LinkedList;
-
 import gdi1shisen.datastore.GamePlayer;
 import gdi1shisen.datastore.Highscore;
 import gdi1shisen.datastore.UserMoveHistory;

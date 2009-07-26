@@ -13,7 +13,7 @@ import javax.swing.JLabel;
  * Klasse zum Erzeugen eines "Über uns" Fensters
  * @author Thomas, Eugen
  */
-public class About extends JFrame implements ActionListener
+public class ImageFrame extends JFrame implements ActionListener
 {
 	
 	private static final long serialVersionUID = -2344L;
@@ -25,13 +25,14 @@ public class About extends JFrame implements ActionListener
 	 * Konstruktor für das Fenster
 	 * @param windowTitle String
 	 */
-	public About(String windowTitle)
+	public ImageFrame(String windowTitle, ShisenFrame frame, String imagePath)
 	{
 		super(windowTitle);
 		setLayout(new BorderLayout());
+		setLocation(frame.getLocation());
 		
 		//Befüllen des Labels und des JButtons mit Inhalten
-		ImageIcon teamPicture = new ImageIcon("Images/projektgruppe_foto.jpg");
+		ImageIcon teamPicture = new ImageIcon(imagePath);
 		centerImage.setIcon(teamPicture);
 		exitButton.setText("Fenster schließen");
 		exitButton.addActionListener(this);
@@ -57,6 +58,5 @@ public class About extends JFrame implements ActionListener
 			dispose();
 		}
 	}
-
 }	
 
