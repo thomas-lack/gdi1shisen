@@ -373,20 +373,36 @@ public class UserMove {
 	{
 		//Spielzeit anhalten
 		timer.stopTimer();
-				
-		//Rückmeldung beim User
-		showMessageBox("Gewonnen", "Herzlichen Glückwunsch, Sie haben das Level gelöst!");
+		
+		//positive Rückmeldung, falls keine Hint-Funktion benutzt wurde
+		if (!player.isHintUsed())
+		{
+			showMessageBox("Gewonnen", "Herzlichen Glückwunsch, Sie haben " +
+					"das Level gelöst!");
+		}
+		//ansonsten semi-positive Rückmeldung mit Hinweis
+		else
+		{
+			showMessageBox("Gewonnen", "Das Level wurde erfolgreich gelöst.\n" +
+					"Aber diesmal wird es nichts mit einem Eintrag in die\n" +
+					"Highscore Liste, da eine Hilfestellung gegeben wurde.\n" +
+					"Viel Glück beim nächsten Versuch.");
+		}
 		
 		//Highscore
-		try 
+		if (!player.getActualLevel().equals("RANDOM"))
 		{
-			Highscore highscore = new Highscore(player.getActualLevelHighscore());
-			highscore.add(timer.getGameTime(), player.getPlayerName());
-			new HighscoreFrame(highscore, frame);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
+			try 
+			{
+				Highscore highscore = new Highscore(player.getActualLevelHighscore());
+				if (!player.isHintUsed())
+					highscore.add(timer.getGameTime(), player.getPlayerName());
+				new HighscoreFrame(highscore, frame);
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -594,6 +610,9 @@ public class UserMove {
 	 */
 	public void showNextPossibleMove()
 	{
+		//Vermerk, dass eine Hint-Funktion benutzt wurde
+		player.setHintUsed(true);
+		
 		try 
 		{
 			//Falls kein Zug mehr möglich ist, soll eine entspr. Meldung kommen
@@ -628,6 +647,9 @@ public class UserMove {
 	 */
 	public void solveLevel()
 	{
+		//Vermerk, dass eine Hint-Funktion benutzt wurde
+		player.setHintUsed(true);
+		
 		//Ausgabe mit Hinweis auf Dauer der Berechnungen
 		showMessageBox("Achtung", "Je nach Rechenleistung kann die Berechnung\n" +
 				"zum Lösen des Levels einige Zeit in Anspruch nehmen.");

@@ -14,6 +14,7 @@ public class GamePlayer implements Serializable
 	private String tileSet = "Images/Default/";
 	private String actualLevel;
 	private String actualLevelHighscore;
+	private boolean hintUsed = false;
 	
 	/**
 	 * Allg. Konstruktor für Spieler Objekt
@@ -54,7 +55,8 @@ public class GamePlayer implements Serializable
 	 * Setzen des Aktuellen Levelpfades als String
 	 * @param actualLevel String
 	 */
-	public void setActualLevel(String actualLevel) {
+	public void setActualLevel(String actualLevel) 
+	{
 		this.actualLevel = actualLevel;
 
 		//gleichzeitig zum Speichern des aktuellen Levels
@@ -67,7 +69,8 @@ public class GamePlayer implements Serializable
 	 * Getter für den aktuellen Levelpfad als String
 	 * @return String
 	 */
-	public String getActualLevel() {
+	public String getActualLevel() 
+	{
 		return actualLevel;
 	}
 
@@ -75,7 +78,8 @@ public class GamePlayer implements Serializable
 	 * Setzt das aktuell zu benutzende TileSet als Pfad
 	 * @param tileSet String
 	 */
-	public void setTileSet(String tileSet) {
+	public void setTileSet(String tileSet) 
+	{
 		this.tileSet = tileSet;
 	}
 
@@ -83,7 +87,8 @@ public class GamePlayer implements Serializable
 	 * Getter für das aktuell benutzte TileSet als Pfad String
 	 * @return String
 	 */
-	public String getTileSet() {
+	public String getTileSet() 
+	{
 		return tileSet;
 	}
 
@@ -91,7 +96,8 @@ public class GamePlayer implements Serializable
 	 * Setzt den Pfad für die aktuelle Highscore Datei
 	 * @param actualLevelHighscore String
 	 */
-	public void setActualLevelHighscore(String actualLevelHighscore) {
+	public void setActualLevelHighscore(String actualLevelHighscore) 
+	{
 		this.actualLevelHighscore = actualLevelHighscore;
 	}
 
@@ -99,8 +105,27 @@ public class GamePlayer implements Serializable
 	 * Getter für den Pfad String der aktuellen Highscore Datei
 	 * @return String
 	 */
-	public String getActualLevelHighscore() {
+	public String getActualLevelHighscore() 
+	{
 		return actualLevelHighscore;
+	}
+
+	/**
+	 * Setzt den Hinweis ob eine Hint-Funktion benutzt wurde
+	 * auf true oder false (Standard ist false)
+	 * @param hintUsed boolean
+	 */
+	public void setHintUsed(boolean hintUsed) 
+	{
+		this.hintUsed = hintUsed;
+	}
+
+	/**
+	 * Getter für den Hinweis, ob eine Hint-Funktion benutzt wurde
+	 * @return boolean
+	 */
+	public boolean isHintUsed() {
+		return hintUsed;
 	}
 	
 	

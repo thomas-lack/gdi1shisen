@@ -109,6 +109,9 @@ public class UserMoveMenu
 		if (timer != null)
 			timer.stopTimer();
 		
+		//Hinweis auf benutzte Hint-Funktion zurücksetzen
+		player.setHintUsed(false);
+		
 		//erzeugen eines neuen LevelParser Objekts für das neue Level
 		//und setzen der "aktuelles Level" Informationen für das Player Objekt 
 		if (level.equals("randomLevel"))
@@ -310,6 +313,9 @@ public class UserMoveMenu
 		//falls einer läuft
 		if (timer != null)
 			timer.stopTimer();
+		
+		//Hinweis auf benutzte Hint-Funktion zurücksetzen
+		player.setHintUsed(false);
 		
 		//erzeugen eines neuen LevelParser Objekts für das neue Level
 		this.levelParser = levelClone;
