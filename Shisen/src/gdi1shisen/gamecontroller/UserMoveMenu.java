@@ -22,6 +22,11 @@ import gdi1shisen.gui.MessageBox;
 import gdi1shisen.gui.ShisenFrame;
 import gdi1shisen.gui.ShisenFrameBoard;
 
+/**
+ * Controller Klasse für Verarbeitung von Eingaben in 
+ * der Menüleiste am oberen Fensterrand.
+ * @author Thomas, Benjamin
+ */
 public class UserMoveMenu 
 {
 	private ShisenFrame frame;
@@ -297,6 +302,11 @@ public class UserMoveMenu
 		initializeNewGamePanel(this.levelClone.getLevel());
 	}
 	
+	/**
+	 * startet ein neues Spielfeld mit den bisher übrigen Steinen
+	 * in neu gemischter Reihenfolge.
+	 * @param levelParser LevelParser
+	 */
 	public void restartShuffleLevel(LevelParser levelParser)
 	{
 		//Anhalten des parallelen Timer Threads aus vorherigen Leveln
@@ -308,8 +318,7 @@ public class UserMoveMenu
 		player.setHintUsed(true);
 		
 		//Setzen der neuen LevelDaten
-		this.levelParser = levelParser;
-		levelClone = levelParser.clone();	
+		this.levelParser = levelParser;	
 		
 		//Neues GamePanel erzeugen
 		initializeNewGamePanel(this.levelParser.getLevel());
