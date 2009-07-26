@@ -11,7 +11,7 @@ public class KeyData implements Serializable
 	
 	public KeyData()
 	{
-		cursor = new int [] {1,1};
+		cursor = null;
 	}
 	
 	/**

@@ -147,9 +147,6 @@ public class ShisenFrameBoard extends GamePanel
 				}
 			}
 			
-			// markiert den ersten Spielstein nachdem Spielfeld aufgebaut ist
-			this.gameButton[1][1].setEnabled(false);
-			
 			// setze Eingabe Fokus zurück auf ShisenFrame 
 			this.frame.requestFocusInWindow();
 		}

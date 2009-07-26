@@ -484,47 +484,67 @@ public class UserMove {
 	 */
 	public void moveCursor(int x, int y)
 	{	
-		int[] posPrev = moveKeyData.getCursor(); 
-		
-		gamePanel.changeBrickState(posPrev[0], posPrev[1],true);
-
-		int ymax = gamePanel.getHeight()/gamePanel.getBrickHeight()-2;
-		int xmax = gamePanel.getWidth()/gamePanel.getBrickWidth()-2;
+		// alte Cursor Position
+		int[] posPrev = moveKeyData.getCursor();
+		// Position des nächsten Steins
+		int[] nextBrick = new int[] {x,y}; 
 		
 		if(posPrev!=null)
 		{
-			if(x>xmax && y<=ymax)
-			{
-				this.gamePanel.changeBrickState(1, y, false);
-				moveKeyData.setCursor(new int[] {1,y});
-			}
-			else if(x <= xmax && y>ymax)
-			{
-				this.gamePanel.changeBrickState(x, 1, false);
-				moveKeyData.setCursor(new int[] {x,1});
-			}
-			else if(x < 1 && y>=1)
-			{
-				this.gamePanel.changeBrickState(xmax, y, false);
-				moveKeyData.setCursor(new int[] {xmax,y});
-			}
-			else if(x>=1 && y < 1 )
-			{
-				this.gamePanel.changeBrickState(x, ymax, false);
-				moveKeyData.setCursor(new int[] {x,ymax});
-			}
-			else
-			{
-				this.gamePanel.changeBrickState(x, y, false);
-				moveKeyData.setCursor(new int[] {x,y});
-			}
+			// cursor auf vorherigem Stein löschen
+			gamePanel.changeBrickState(posPrev[0], posPrev[1],true);
+
+			// wenn stein auf dem nächsten Spielfeld sichtbar markieren
+			nextBrick = new int [] {x,y};
+		}
+		else
+		{
+			// cursor wurde noch nie initalisiert ... initialisiern für Ort (1,1)
+			nextBrick=new int[] {1,1};
 		}
 		
+		nextBrick = this.borderControl(nextBrick);
+		
+		this.gamePanel.changeBrickState(nextBrick[0], nextBrick[1], false);
+		moveKeyData.setCursor(nextBrick);
 		//Synchronisation der aktuellen KeyData mit dem Controller 
 		//für das Menü
 		userMoveMenu.setMoveKeyData(moveKeyData);
 		
 	}
+	
+	/**
+	 * Überprüft ob der Cursor über die Spielebgrenzung gehen würde
+	 * und korriegiert dessen Koordinaten wenn ja
+	 * @param nextBrick
+	 * @return int[] 2D Koordinaten von neuem Brick
+	 */
+	
+	private int [] borderControl(int [] nextBrick)
+	{
+		int ymax = gamePanel.getHeight()/gamePanel.getBrickHeight()-2;
+		int xmax = gamePanel.getWidth()/gamePanel.getBrickWidth()-2;
+		
+		if(nextBrick[0]>xmax && nextBrick[1]<=ymax)
+		{
+			nextBrick[0]=1;
+		}
+		if(nextBrick[0] <= xmax && nextBrick[1]>ymax)
+		{
+			nextBrick[1]=1;
+		}
+		if(nextBrick[0]< 1 && nextBrick[1]>=1)
+		{
+			nextBrick[0]=xmax;
+		}
+		if(nextBrick[0]>=1 && nextBrick[1] < 1 )
+		{
+			nextBrick[1]=ymax;
+		}
+		
+		return nextBrick;
+	}
+		
 	
 	/**
 	 * Wird von ShisenFrameBoard aufgerufen um die gedrückten Tasten zu
@@ -545,7 +565,9 @@ public class UserMove {
 	{
 		if(this.reloadInput())
 		{
-			int [] cursor = moveKeyData.getCursor(); 
+			int [] cursor = moveKeyData.getCursor();
+			if(cursor == null)
+				cursor = new int[] {1,1};
 			
 			switch(key)			// abarbeitung der verschiedenen Keys 
 			{	
