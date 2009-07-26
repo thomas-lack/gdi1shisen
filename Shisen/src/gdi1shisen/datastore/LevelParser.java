@@ -38,22 +38,29 @@ public class LevelParser implements Serializable
 		try 
 		{
 			BufferedReader in = new BufferedReader(new FileReader(this.file));
-			BufferedReader in2 = new BufferedReader(new FileReader(this.file));
-			String zeile = null;
-			int rows = 0;
-			int cols = 0;
-			while((zeile = in2.readLine()) != null){
-				cols = zeile.length();
-				rows++;
-			}
-			level = new char[rows][cols];
-			levelActive = new char[rows+2][cols+2];
+			String zeile;
+			
 			int x = 0;
+			int zeilenlaenge = 0;
 			while ((zeile = in.readLine()) != null) 
 			{
-				level[x] = zeile.toCharArray();
+				char[] zeilenChars = zeile.toCharArray();
+				if(x!=0 && zeilenlaenge!=zeilenChars.length) throw new SyntacticIncException("Syntaktisch Inkorrekt - zeilen in datei unterschiedlich lang");
+				zeilenlaenge = zeilenChars.length;
+				if(level==null){
+					level = new char[1][zeilenlaenge];
+					level[0] = zeilenChars.clone();
+				}else{
+					char[][] levelClone = level.clone();
+					level = new char[levelClone.length+1][zeilenlaenge];
+					System.arraycopy(levelClone, 0, level, 0, level.length-1);
+					level[levelClone.length] = zeilenChars;
+				}
+				
 				x++;
 			}
+			levelActive = new char[level.length+2][level[0].length+2];
+			
 			fillActiveLevels();
 		} catch (IOException e) {
 			e.printStackTrace();
