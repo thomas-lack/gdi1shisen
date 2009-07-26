@@ -426,9 +426,16 @@ public class UserMoveMenu
 		if(this.userMoveController==null)
 			return true;
 		else
-			return this.userMoveController.reloadInput();
-		
-			
+			return this.userMoveController.reloadInput();	
+	}
+	
+	/**
+	 * Getter für das Aktuelle Spielfenster Objekt
+	 * @return ShisenFrame
+	 */
+	public ShisenFrame getFrame()
+	{
+		return frame;
 	}
 	
 }

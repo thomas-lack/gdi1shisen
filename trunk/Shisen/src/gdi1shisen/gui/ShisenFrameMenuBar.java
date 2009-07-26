@@ -2,10 +2,7 @@ package gdi1shisen.gui;
 
 import gdi1shisen.gamecontroller.UserMoveMenu;
 import javax.swing.*;
-
 import java.awt.event.*;
-import gdi1shisen.gui.SpielRegeln;
-import gdi1shisen.gui.SpielSteuerung;
 
 /**
  * Namespacing für Menüleisten Eintrage im Spielfenster
@@ -48,20 +45,20 @@ implements ActionListener
 			String e = event.getActionCommand();
 			if (e.equals("Beenden"))
 				System.exit(0);
-			else if (e.equals("Über"))
+			else if (e.equals("Über uns"))
 			{
-				About about = new About("Über uns");
-				about.setVisible(true);
+				new ImageFrame("Über uns", moveMenuController.getFrame(), 
+						"Images/projektgruppe_foto.jpg");
 			}
 			else if (e.equals("Spielregeln"))
 			{
-			      SpielRegeln spregeln = new SpielRegeln();
-		          spregeln.setVisible(true);
-			    }
+				new ImageFrame("Spielregeln", moveMenuController.getFrame(), 
+						"Images/spielregeln.png");
+			}
 			else if (e.equals("Spielsteuerung"))
 			{
-				 SpielSteuerung spsteuer = new SpielSteuerung();
-		         spsteuer.setVisible(true);
+				new ImageFrame("Spielsteuerung", moveMenuController.getFrame(), 
+					"Images/Spielsteuerung.png");
 			}
 			else if (e.equals("Zufallslevel"))
 			{
@@ -207,22 +204,6 @@ implements ActionListener
 			ret.add(mi);
 			
 		}
-		/*
-		//Level 001
-		mi = new JMenuItem("001", '1');
-		mi.addActionListener(this);
-		ret.add(mi);
-		
-		//Level 002
-		mi = new JMenuItem("002", '2');
-		mi.addActionListener(this);
-		ret.add(mi);
-		
-		//Level 003
-		mi = new JMenuItem("003", '3');
-		mi.addActionListener(this);
-		ret.add(mi);
-		*/
 		
 		//Separator
 		ret.addSeparator();
@@ -258,7 +239,7 @@ implements ActionListener
 		ret.addSeparator();
 		
 		//Über uns
-		mi = new JMenuItem("Über", 'b');
+		mi = new JMenuItem("Über uns", 'b');
 		mi.addActionListener(this);
 		ret.add(mi);
 		return ret;
