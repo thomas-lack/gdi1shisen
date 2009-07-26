@@ -1,5 +1,8 @@
 package gdi1shisen.gamecontroller;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import gdi1shisen.datastore.GamePlayer;
 import gdi1shisen.gui.ShisenFrame;
 
@@ -14,6 +17,18 @@ public class Init
 	 */
 	public static void main(String[] args) 
 	{
+        try {
+			UIManager.setLookAndFeel(
+			    UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		//Erstellen eines neuen Fensters 
 		ShisenFrame frame = new ShisenFrame("Little Buddha Shisen");
 		
