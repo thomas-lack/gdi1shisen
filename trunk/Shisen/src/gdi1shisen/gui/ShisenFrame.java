@@ -245,5 +245,9 @@ public class ShisenFrame extends GameWindow{
 			{
 				gamePanel.keyPressed(6);
 			}
+			if(key.getKeyChar()=='h')
+			{
+				gamePanel.keyPressed(8);
+			}
 	}
 }
