@@ -9,7 +9,7 @@ import gdi1shisen.exceptions.SyntacticIncException;
  * Modifikationen an einem Level werden durch diese Klasse geregelt
  * Insbesondere die Cheatfunktion des MixIt
  * @author chandra
- * 
+ * siehe LevelGenerator
  */
 public class LevelManipulation 
 {

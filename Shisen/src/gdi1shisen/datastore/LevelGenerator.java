@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * liefert public static methoden zum generieren von outer/RAW-Leveln char[8][18] 
  * @author chandra Gruppe 3 lo08itaq
- *
+ *	Hilfestellung durch: http://forum.chip.de/java-delphi-pascal/array-mischen-401401.html#post2570609
  */
 public class LevelGenerator {
 	/**
@@ -23,6 +23,10 @@ public class LevelGenerator {
 	 * @param b
 	 */
 	private static void swap(Object[] x, int a, int b) {
+		// erstellt die temporäre Variable t und füllt diese mit x[a]. 
+		// setzt den inhalt von x[a] auf den inhalt von x[b]
+		// und ersetzt den inhalt von x[b] durch t und somit durch den 
+		// alten wert von x[a]
 		Object 
 		t = x[a];
 		x[a] = x[b];
@@ -53,7 +57,9 @@ public class LevelGenerator {
 	 * @return	im outer/RAW Format char[zeilen][spalten]
 	 * @throws SyntacticIncException 
 	 */
-	public static char[][] generateValid(int zeilen,int spalten) throws SyntacticIncException{
+	public static char[][] generateValid(int zeilen,int spalten) 
+	throws SyntacticIncException
+	{
 		if(zeilen*spalten==144){
 			String alleChars = new String("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 			char[] allChars = alleChars.toCharArray();
@@ -81,7 +87,9 @@ public class LevelGenerator {
 	 * @throws SyntacticIncException
 	 * @throws ParameterOutOfRangeException
 	 */
-	public static char[][] generateSolvable() throws SyntacticIncException, ParameterOutOfRangeException{
+	public static char[][] generateSolvable() 
+	throws SyntacticIncException, ParameterOutOfRangeException
+	{
 		return generateSolvable(8,18);
 	}
 	

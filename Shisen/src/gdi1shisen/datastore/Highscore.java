@@ -55,12 +55,16 @@ public class Highscore {
 		zeiten = new LinkedList<long[]>();
 		namen = new LinkedList<String>();
 		File theFile = new File(file);
+		// existiert die datei nicht wird sie angelegt
 		if(!theFile.exists()) theFile.createNewFile();
 		BufferedReader in = new BufferedReader(new FileReader(file));
 		String zeile;
 		int i=0;
+		// lese zeilenweise ein
 		while ((zeile = in.readLine()) != null && i<10)
 		{
+			// entspricht die zeile dem muster name;zahl wird den inhalt an 
+			// die listen namen & zeiten angehängt
 			if (Pattern.matches(".*;[0-9]+", zeile))
 			{
 				String[] parts = zeile.split(";");
@@ -82,12 +86,14 @@ public class Highscore {
 	{
 		if(zeiten!=null && namen!=null)
 		{
+			// sind es mehr als 10 einträge, werden die restlichen gelöst
 			while(zeiten.size()>10){
 				zeiten.removeLast();
 				namen.removeLast();
 			}
 			Writer fw = null; 
 			fw = new FileWriter( file );
+			// schreibe die namen und zeiten in die datei
 			for(int i=0;i<zeiten.size();i++)
 			{
 				StringBuffer sb = new StringBuffer();

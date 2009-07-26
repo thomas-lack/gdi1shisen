@@ -30,8 +30,12 @@ public class Brick extends Point
 	 * @throws ParameterOutOfRangeException
 	 */
 	public Brick(LevelParser pLevelObj, int x, int y)
-			throws ParameterOutOfRangeException {
+	throws ParameterOutOfRangeException 
+	{
+		//initialisiere brick auf die selbe weise wie jeden Point
 		super(pLevelObj, x, y);
+		//berechne die Koordinaten der Brüderstein (Brüder sind solche mit unterschiedlichen koordinaten
+		// aber selben inhalt)
 		int[][] tmpBrothers = getBrothers(xCoord, yCoord);
 		if (tmpBrothers != null) 
 		{
@@ -45,6 +49,8 @@ public class Brick extends Point
 				}
 			}
 		}
+		//berechne die nachbar
+		//nachbarn sie die bricks die über leersteine/waypoints ohne richtungsänderung erreichbar sind
 		getNeighbours();
 	}
 
@@ -56,33 +62,38 @@ public class Brick extends Point
 	 */
 	private void getNeighbours() throws ParameterOutOfRangeException 
 	{
+		//vier mal, da es maximal 4 nachbarn geben kann
 		for (int i = 0; i < 4; i++) 
 		{
 			int[] lastMove = new int[] { xCoord, yCoord };
+			//gehe jede koordinaten einzeln weiter in eine richtung
 			for (int[] moved = doMoveInner(xCoord, yCoord, i); !moved
 					.equals(new int[] { xCoord, yCoord })
 					&& !(lastMove[0] == moved[0] && lastMove[1] == moved[1]); moved = doMoveInner(
 					moved[0], moved[1], i)) {
 				System.arraycopy(moved, 0, lastMove, 0, 2);
+				// wenn der inhalt des moves nicht leer ist, wurde ein nachbar gefunden
 				if (!empty(moved[0], moved[1])) 
 				{
 					nachbarn[i] = mkPID(moved[0], moved[1],parsedLevel);
 					switch (i) {
 					case 0:
-						nachbarO = mkPID(moved[0], moved[1],parsedLevel);
+						nachbarO = nachbarn[i];
 						break;
 					case 1:
-						nachbarR = mkPID(moved[0], moved[1],parsedLevel);
+						nachbarR = nachbarn[i];
 						break;
 					case 2:
-						nachbarU = mkPID(moved[0], moved[1],parsedLevel);
+						nachbarU = nachbarn[i];
 						break;
 					case 3:
-						nachbarL = mkPID(moved[0], moved[1],parsedLevel);
+						nachbarL = nachbarn[i];
 						break;
 					}
 					break;
-				} else 
+				} else
+				// andernfalls ist es ein WayPoint da der stein leer ist
+				// und über ihn gezogen werden kann 
 				{
 					nachbarn[i] = -1;
 					addWayPoint(new WayPoint(level, moved[0], moved[1], i));
@@ -98,12 +109,16 @@ public class Brick extends Point
 	 * @param wPoint
 	 *            der Wegpunkt der zur wayPointList hinzugefuegt werden soll
 	 */
+	// verwendet keine Liste sondern ein array, da ich urspünglich auf listen
+	// komplett verzichten wollte
 	public void addWayPoint(WayPoint wPoint) 
 	{
+		// wenn wayPointList leer ist, dann wird sie neu initialisiert
 		if (wayPointList == null) 
 		{
 			wayPointList = new WayPoint[] { wPoint };
 		} else 
+		// ansonsten wird ein eintrag hinten angehängt
 		{
 			WayPoint[] wpLClone = wayPointList.clone();
 			wayPointList = new WayPoint[wpLClone.length + 1];
