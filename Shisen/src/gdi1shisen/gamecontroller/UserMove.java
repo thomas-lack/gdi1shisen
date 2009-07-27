@@ -195,7 +195,10 @@ public class UserMove {
 				else
 				{
 					//Zeige in der Infoleiste entsprechende Rückmeldung an
-					this.infoBar.showNoValidMove();					
+					this.infoBar.showNoValidMove();	
+					//Sound abspielen
+					gdi1shisen.datastore.Sound t1 = new gdi1shisen.datastore.Sound("./Sounds/fehler.mp3"); 
+					t1.start();
 				}
 			}
 			catch (Exception ex)
@@ -374,6 +377,10 @@ public class UserMove {
 		//Spielzeit anhalten
 		timer.stopTimer();
 		
+		//Sound abspielen
+		gdi1shisen.datastore.Sound t1 = new gdi1shisen.datastore.Sound("./Sounds/sndPlugin.mp3"); 
+		t1.start(); 
+		
 		//positive Rückmeldung, falls keine Hint-Funktion benutzt wurde
 		if (!player.isHintUsed())
 		{
@@ -442,6 +449,10 @@ public class UserMove {
 	 */
 	public void showBrickRemovePath(MoveData moveControllerData)
 	{
+		//Sound abspielen
+		gdi1shisen.datastore.Sound t1 = new gdi1shisen.datastore.Sound("./Sounds/gemacht.mp3"); 
+		t1.start();
+		
 		int[][] a = moveControllerData.getTheWay();
 		
 		// definiere Hilfsvariablen für Koordinatentransformation
