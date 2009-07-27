@@ -1,2 +1,2 @@
 @echo off
-java -classpath ./bin gdi1shisen/gamecontroller/Init
+java -classpath ./lib/*:./bin gdi1shisen/gamecontroller/Init
